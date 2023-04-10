@@ -24,6 +24,17 @@ public class UserController {
         return "getAllUsers";
     }
 
+    @GetMapping("/getAddUser")
+    public String getAddUser() {
+        return "getAddUser";
+    }
+
+    @PostMapping("/addUser")
+    public String postAddUser(@ModelAttribute User user) {
+        userService.add(user);
+        return "redirect:/getAllUsers";
+    }
+
     @GetMapping("/getDeleteUser")
     public String getDeleteUser(@RequestParam("id") Long id, Model model) {
         model.addAttribute("user", userService.deleteUserById(id));
@@ -40,17 +51,6 @@ public class UserController {
     public String getUpdateUser(@RequestParam("id") Long id, Model model) {
         model.addAttribute("user", userService.deleteUserById(id));
         return "getUpdateUser";
-    }
-
-    @GetMapping("/getAddUser")
-    public String getAddUser() {
-        return "getAddUser";
-    }
-
-    @PostMapping("/addUser")
-    public String postAddUser(@ModelAttribute User user) {
-        userService.add(user);
-        return "redirect:/getAllUsers";
     }
 
     @PostMapping("/updateUser")
