@@ -40,7 +40,6 @@ public class HibernateConfig {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-
         return properties;
     }
 
